@@ -2,9 +2,8 @@ package Lesson4;
 
 public class Classwork {
     public static void main(String[]args) {
-       int [] array={1,200,45};
-        int res=highestInArray(array);
-        System.out.println(res);
+      char a='A';
+      System.out.println((int)a);
     }
    static int highestInArray(int[]array){
       int result=array[0];
