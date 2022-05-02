@@ -1,12 +1,21 @@
 package Lesson5;
 
+import java.lang.reflect.Array;
+import java.util.Scanner;
+
 public class Classwork {
     public static void main(String[]args) {
-        Human Andrew=new Human("Age","Alarbekyan","Man",12);
-        Human Andrew1=new Human("Abe","Alarbekyan","Man",15);
-        Human Andrew2=new Human("Sash","Alarbekyan","Man",-3);
-        Human[]sortedByAge=sortByName(new Human[]{Andrew1,Andrew,Andrew2});
-        printNames(sortedByAge);
+        String name;
+        String lastName;
+        int age;
+        String gender;
+        Scanner indata=new Scanner(System.in);
+        name=indata.next();
+        lastName=indata.next();
+        age=indata.nextInt();
+        gender=indata.next();
+
+
     }
     public static Human[] sortByAge(Human[]data){
         for(int i=0;i<data.length;i++){
