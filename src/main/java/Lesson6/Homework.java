@@ -22,6 +22,9 @@ public class Homework {
                 case 1:
                     System.out.println("Please type the name");
                     String name=data.next();
+                    while(name==null){
+                        name=data.next();
+                    }
                     System.out.println("Please type the Surname");
                     String surName=data.next();
                     System.out.println("Please type the age");
@@ -68,7 +71,8 @@ public class Homework {
     public static void printUsers(User[] users){
         int index=1;
         for(int i=0;i<count;i++){
-                System.out.println("the index of "+users[i].getName()+" is "+index);
+                //System.out.println("the index of "+users[i].getName()+" is "+index);
+                System.out.println("The index of "+users[i].toString()+" is "+index);
                 index++;
         }
     }
@@ -92,12 +96,8 @@ public class Homework {
     }
     public static User[]sortByName(User[]data){
         for(int i=0;i<count;i++){
-            for(int j=0;j<count-i-1;j++){
-                int index=0;
-                while(data[j].getName().charAt(index)==data[j+1].getName().charAt(index)){
-                    index++;
-                }
-                if(data[j].getSurName().charAt(index)>data[j+1].getName().charAt(index)){
+            for(int j=0;j< count-i-1;j++){
+                if(data[j].getName().compareTo(data[j+1].getName())==1){
                     User perm=data[j];
                     data[j]=data[j+1];
                     data[j+1]=perm;

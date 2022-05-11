@@ -18,6 +18,12 @@ public class User {
 
     public void setName(String name) {
         name=name.toLowerCase(Locale.ROOT);
+        for(int i=0;i<name.length();i++){
+            if((int)name.charAt(i)<97||(int)name.charAt(i)>122){
+                this.name=null;
+                return;
+            }
+        }
         this.name = name;
     }
 
@@ -35,5 +41,14 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
