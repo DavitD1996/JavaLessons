@@ -33,6 +33,11 @@ public class Tiger extends  Predator implements Hunter{
     }
 
     @Override
+    public void inject() {
+        System.out.println("I have been injected from mouth");
+    }
+
+    @Override
     public void huntBegin(int speed) {
 
        if(this.getMotionSpeed()>speed){

@@ -67,4 +67,6 @@ public abstract class Animal {
     }
 
     public abstract void moveTpe();
+
+    public abstract void inject();
 }

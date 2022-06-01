@@ -34,6 +34,11 @@ public class Sparrow extends Birds implements  Hunter{
     }
 
     @Override
+    public void inject() {
+        System.out.println("I Have been injected from ass");
+    }
+
+    @Override
     public void huntBegin(int age) {
         if(this.getAge()<age){
             System.out.println("All insects will be caught by "+ this.getName());

@@ -1,6 +1,6 @@
 package Lesson8;
 
-public class Birds extends Animal{
+ public class Birds extends Animal{
     private int flyHeight;
     public int getFlyHeight() {
         return flyHeight;
@@ -20,4 +20,8 @@ public class Birds extends Animal{
         System.out.println("Mainly I fly");
     }
 
-}
+     @Override
+     public void inject() {
+         System.out.println("some data");
+     }
+ }

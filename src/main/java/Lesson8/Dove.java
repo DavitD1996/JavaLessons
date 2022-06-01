@@ -32,4 +32,9 @@ public class Dove extends  Birds{
     public void move() {
         System.out.println(this.getName()+" is moving by "+this.getMotionSpeed()+" speed");
     }
+
+    @Override
+    public void inject() {
+
+    }
 }

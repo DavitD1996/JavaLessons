@@ -18,4 +18,9 @@ public class Predator extends Animal{
     public void moveTpe(){
     System.out.println("Mainly I run");
     }
+
+    @Override
+    public void inject() {
+
+    }
 }

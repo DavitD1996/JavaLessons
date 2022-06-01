@@ -35,4 +35,9 @@ public class Lyon extends Predator{
     public void move() {
         System.out.println(this.getName()+" is moving by "+this.getMotionSpeed()+" speed");
     }
+
+    @Override
+    public void inject() {
+
+    }
 }
