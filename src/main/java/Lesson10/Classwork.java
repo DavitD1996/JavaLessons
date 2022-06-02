@@ -10,8 +10,23 @@ public class Classwork {
     public static boolean isFinished = false;
 
     public static void main(String[] args) {
-
-
+            User[]user=new User[2];
+            String[]data=new String[]{"da","ba"};
+            String a="sasasa";
+            user[0]=new User("jorj","kluni");
+            user[0].setPosts(data);
+            user[1]=new User("dav","vato");
+            user[1].setPosts(data);
+            FileHandle.writeInFile(user);
+            String result=FileHandle.readFromFile();
+            String[]preResult=FileHandle.convertFromStringToUser(result);
+        User u=new User(preResult[0].substring(preResult[0].indexOf('/')+1,preResult[0].lastIndexOf('/')),preResult[0].substring(preResult[0].indexOf('*')+1,preResult[0].lastIndexOf('*')));
+        String commentText=preResult[0].substring(preResult[0].lastIndexOf('*'),preResult[0].indexOf("//"));
+        String[]comments=commentText.split(",");
+        u.setPosts(comments);
+        for(int i=0;i<u.getPosts().length;i++){
+            System.out.println(u.getPosts()[i]);
+        }
         while (!isFinished) {
             if (isLoggedIn) {
                 handleLogedinFlow();
