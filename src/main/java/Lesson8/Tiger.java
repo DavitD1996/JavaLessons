@@ -1,0 +1,50 @@
+package Lesson8;
+
+public class Tiger extends  Predator implements Hunter{
+    private String name;
+    public Tiger(String type, String meal, int age, int motionSpeed, String groan, int jumpDistance,String name) {
+        super(type, meal, age, motionSpeed, groan, jumpDistance);
+        this.setName(name);
+    }
+    public Tiger(Predator predator, String name){
+        super(predator.getType(), predator.getMeal(),predator.getAge(), predator.getMotionSpeed(), predator.getGroan(), predator.getJumpDistance());
+        this.setName(name);
+
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    @Override
+    public String toString() {
+        return this.getName()+ " is" +this.getAge()+ " years old";
+    }
+
+    @Override
+    public void feed() {
+        System.out.println(this.getName()+" is eating "+this.getMeal());
+    }
+    @Override
+    public void move() {
+        System.out.println(this.getName()+" is moving by "+this.getMotionSpeed()+" speed");
+    }
+
+    @Override
+    public void inject() {
+        System.out.println("I have been injected from mouth");
+    }
+
+    @Override
+    public void huntBegin(int speed) {
+
+       if(this.getMotionSpeed()>speed){
+           System.out.println("the prey can be captured by "+this.getName());
+       }
+       else{
+           System.out.println("the prey is to fast");
+       }
+    }
+}
