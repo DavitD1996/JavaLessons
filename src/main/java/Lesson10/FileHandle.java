@@ -2,6 +2,8 @@ package Lesson10;
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class FileHandle {
     public static void writeInFile(User[]users){
@@ -30,7 +32,7 @@ public class FileHandle {
             System.out.println(ex.getMessage());
         }
     }
-    public static String readFromFile(){
+    public static String readFromFile() throws Exceptionex{
         String data="";
         try(FileReader file=new FileReader("C:\\Users\\windowstest\\Desktop\\text.txt")){
             int c;
@@ -39,26 +41,37 @@ public class FileHandle {
             }
         }
         catch (Exception ex){
-            System.out.println(ex.getMessage());
+            throw new Exceptionex("There are not some users");
         }
         return data;
     }
-    public  static String[] convertFromStringToUser(String data){
+    public  static User[] convertFromStringToUser(){
         User[] users = new User[10];
-        if(data!=null) {
-            String[] preResult = data.split("//");
-            for (int i = 0; i < preResult.length; i++) {
-                if(preResult[i]!=null){
-                    String name=preResult[i].substring(preResult[i].indexOf('/')+1,preResult[i].lastIndexOf('/'));
-                    String password=preResult[i].substring(preResult[i].indexOf('*')+1,preResult[i].lastIndexOf('*'));
-                    String commentText=preResult[i].substring(preResult[i].lastIndexOf('*'),preResult[i].indexOf("//"));
-                    String[]comments=commentText.split(",");
-                    users[i]=new User(name,password);
-                    users[i].setPosts(comments);
-                }
-
-            }
-        }
-        return null;
+       try{String data=readFromFile();
+           data=data.trim();
+           if(data!=null) {
+               String[] preResult = data.split("//");
+               for (int i = 0; i < preResult.length; i++) {
+                   if(preResult[i]!=null){
+                       String name=preResult[i].substring(preResult[i].indexOf('/')+1,preResult[i].lastIndexOf('/')).trim();
+                       String password=preResult[i].substring(preResult[i].indexOf('*')+1,preResult[i].lastIndexOf('*')).trim();
+                       if(preResult[i].contains(",")){
+                           String commentText=preResult[i].substring(preResult[i].lastIndexOf('*')+1,preResult[i].lastIndexOf(',')).trim();
+                           String[]comments=commentText.split(",");
+                           users[i]=new User(name,password);
+                           users[i].setPosts(comments);
+                       }
+                       else{
+                           users[i]=new User(name,password);
+                       }
+                   }
+               }
+           }
+           return users;
+       }
+       catch (Exception ex){
+           System.out.println(ex.getMessage());
+       }
+    return  null;
     }
 }

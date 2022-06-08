@@ -1,8 +1,5 @@
 package Lesson10;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class UserService {
 
@@ -10,12 +7,7 @@ public class UserService {
         private static User[] users = new User[10];
 
         public static User[] getAllUsers() {
-            try(ObjectInputStream oos=new ObjectInputStream(new FileInputStream("C://Users//windowstest//Desktop//datau.txt"))){
-                users=(User[])oos.readObject();
-            }
-            catch (Exception ex){
-                System.out.println(ex.getMessage());
-            }
+           users= FileHandle.convertFromStringToUser();
             if(users!=null){
                 return users;
             }
@@ -28,14 +20,7 @@ public class UserService {
             for (int i = 0; i < users.length; i++) {
                 if (users[i] == null) {
                     users[i] = user;
-                    try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C://Users//windowstest//Desktop//datau.txt")))
-                    {
-                       oos.writeObject(users);
-                    }
-                    catch(Exception ex){
-
-                        System.out.println(ex.getMessage());
-                    }
+                    FileHandle.writeInFile(users);
                     return true;
                 }
             }
@@ -43,12 +28,7 @@ public class UserService {
         }
 
         public static User getUserByUsername(String username) {
-            try(ObjectInputStream oos=new ObjectInputStream(new FileInputStream("C://Users//windowstest//Desktop//datau.txt"))){
-                users=(User[])oos.readObject();
-            }
-            catch (Exception ex){
-                System.out.println(ex.getMessage());
-            }
+            users=FileHandle.convertFromStringToUser();
             if(users==null){
                 return null;
             }
@@ -75,14 +55,7 @@ public class UserService {
             for (int i = 0; i < user.getPosts().length; i++) {
                 if (user.getPosts()[i] == null) {
                     user.getPosts()[i] = post;
-                    try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C://Users//windowstest//Desktop//datau.txt")))
-                    {
-                        oos.writeObject(users);
-                    }
-                    catch(Exception ex){
-
-                        System.out.println(ex.getMessage());
-                    }
+                    FileHandle.writeInFile(users);
                     return true;
                 }
             }

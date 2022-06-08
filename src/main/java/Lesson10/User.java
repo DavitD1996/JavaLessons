@@ -36,6 +36,8 @@ public class User implements Serializable {
     }
 
     public void setPosts(String[] posts) {
-        this.posts = posts;
+        for(int i=0;i<posts.length;i++){
+         this.posts[i]=posts[i].trim();
+        }
     }
 }

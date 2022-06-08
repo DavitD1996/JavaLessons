@@ -21,21 +21,26 @@ public class Classwork {
 
     private static void handleLogedoutFlow() {
         printLogedOutMenu();
-        int choice = scn.nextInt();
-        switch (choice) {
-            case 1:
-                registerUser();
-                break;
-            case 2:
-                loginUser();
-                break;
-            case 3:
-                exitProgram();
-                break;
-            default:
-                System.out.println("Invalid choice");
+        try{
+            int choice = scn.nextInt();
+            switch (choice) {
+                case 1:
+                    registerUser();
+                    break;
+                case 2:
+                    loginUser();
+                    break;
+                case 3:
+                    exitProgram();
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
         }
-
+        catch (Exception ex){
+            System.out.println("incorrect data please restart the project");
+        exitProgram();
+        }
     }
 
     private static void exitProgram() {
@@ -73,25 +78,29 @@ public class Classwork {
 
     private static void handleLogedinFlow() {
         printLogedInMenu();
-        int choice = scn.nextInt();
-        switch (choice) {
-            case 1:
-                writePost();
-                break;
-            case 2:
-                showAllPosts();
-                break;
-            case 3:
-                logout();
-                break;
-            case 4:
-                exitProgram();
-                break;
-            default:
-                System.out.println("Invalid choice");
+        try{
+            int choice = scn.nextInt();
+            switch (choice) {
+                case 1:
+                    writePost();
+                    break;
+                case 2:
+                    showAllPosts();
+                    break;
+                case 3:
+                    logout();
+                    break;
+                case 4:
+                    exitProgram();
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
         }
-
-
+        catch (Exception ex){
+            System.out.println("Incorrect data");
+            isFinished=true;
+        }
     }
 
     private static void logout() {
